@@ -1,0 +1,71 @@
+.authentication-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* height: 100vh; */
+  /* background-color: #f2f2f2; */
+}
+
+.authentication-page-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.authentication-page-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.authentication-page-input {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 0.25rem;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  width: 100%;
+  max-width: 20rem;
+}
+
+.authentication-page-button {
+  padding: 0.5rem;
+  margin-top: 1rem;
+  border-radius: 0.25rem;
+  border: none;
+  background-color: #0077ff;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+  max-width: 20rem;
+}
+
+.authentication-page-button:hover {
+  background-color: #005ae6;
+}
+
+.authentication-page-button + .authentication-page-button {
+  margin-top: 0.5rem;
+}
+
+.authentication-page-toggle {
+  margin-left: 1rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: #0077ff;
+}
+
+.authentication-page-toggle:hover {
+  text-decoration: underline;
+}
+
+.authentication-page-password-icon {
+  margin-right: 0.5rem;
+}

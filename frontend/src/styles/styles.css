@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+
+.homepagelinks {
+  display: flex;
+  justify-content: center;
+}
+
+.goto {
+  text-decoration: none;
+  color: black;
+}
+
+.active {
+  font-weight: bold;
+}
+
+.link {
+  /* display: block; */
+  width: 200px;
+  padding: 10px;
+  margin: 10% 42%;
+  border-radius: 5px;
+  background-color: #a1a1a1;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.link:hover {
+  background-color: #464646;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Set font family and size for the entire page */
+/* body {
+  font-family: 'Source Code Pro', Arial, sans-serif;
+  font-size: 16px;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #f4f4f4;
+} */
+
+body {
+  position: relative;
+}
+
+body::after {
+  content: '';
+  display: block;
+  height: 50px; /* Set same as footer's height */
+}
+/* Center an element horizontally and vertically */
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Style headings */
+h1 {
+  font-size: 36px;
+  font-weight: bold;
+  color: #333;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+/* Style paragraphs */
+p {
+  line-height: 1.5;
+  color: #666;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+/* Style links */
+a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+a:hover {
+  /* text-decoration: underline; */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Style buttons */
+button {
+  background-color: #0066cc;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0052a3;
+}
+
+/* Style forms */
+form {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input[type="submit"] {
+  background-color: #0066cc;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #0052a3;
+}
+
+/* Style lists */
+ul {
+  list-style: disc;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+ol {
+  list-style: decimal;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+li {
+  line-height: 1.5;
+  margin-bottom: 5px;
+}
+
+footer {
+  background-color: #f2f2f2;
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  display: inline-block;
+  position: fixed;
+  bottom: 0;
+  height: 50px;
+  width: 100%;
+}

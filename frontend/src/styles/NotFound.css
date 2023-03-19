@@ -1,0 +1,48 @@
+/* Styles for 404 Not Found component */
+
+.not-found-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f2f2f2;
+}
+
+.not-found {
+  text-align: center;
+  padding: 50px;
+  border-radius: 10px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.not-found h1 {
+  font-size: 80px;
+  color: #0066cc;
+  margin: 0;
+}
+
+.not-found h2 {
+  font-size: 36px;
+  margin-top: 0;
+}
+
+.not-found p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 20px 0;
+}
+
+.not-found a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #0066cc;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.not-found a:hover {
+  background-color: #0052a3;
+}
