@@ -1,8 +1,6 @@
 # Things to remeber: 
 
 - Make sure to use `react-router-dom` for all navigation.
-- Try to make sure that the website doesn't reload. Always use proper navigation. 
-
 
 # Some dumb things:
 
