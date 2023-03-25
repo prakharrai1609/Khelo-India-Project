@@ -8,9 +8,11 @@ import ErrorNotFoundPage from "./components/ErrorNotFoundPage";
 import OurTeam from './components/about/our-team'
 import AboutProject from "./components/about/aboutProject";
 import CreateUser from './components/user/createUser';
-import ThankYouCreateUser from './components/user/thankyoucreateuser';
+import ThankYouCreateUser from './components/thankyoucreateuser';
 import { UserDashboard } from './components/user/userDashboard';
 import AdminAuthenticationPage from './components/admin/adminLoginPage';
+import RegisterAdmin from './components/admin/registerAdmin';
+import { AdminDashboard } from './components/admin/adminDashboard';
 
 function App() {
   return (
@@ -21,14 +23,16 @@ function App() {
           <Route index element={<AboutProject />} />
           <Route path="team" element={<OurTeam />} />
         </Route>
-        <Route path="admin" element={<AdminLogin />}>
-          <Route path='register-admin' element={<AdminAuthenticationPage />} />
+        <Route path="admin">
+          <Route index element={<AdminAuthenticationPage />} />
+          <Route path="register-admin" element={<RegisterAdmin />} />
+          <Route path="dashboard/*" element={<AdminDashboard />} />
         </Route>
         <Route path="user" element={<UserLogin />}>
           <Route path="create-user" element={<CreateUser />} />
-          <Route path="thank-you" element={<ThankYouCreateUser />} />
           <Route path="dashboard/*" element={<UserDashboard />} />
         </Route>
+        <Route path="thank-you" element={<ThankYouCreateUser />} />
         <Route path="*" element={<ErrorNotFoundPage />} />
       </Routes>
       <Footer />

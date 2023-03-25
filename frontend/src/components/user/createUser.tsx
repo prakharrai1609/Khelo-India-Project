@@ -50,7 +50,7 @@ const CreateNewUserPage = () => {
 
     // axios.post('http://127.0.0.1:8080/users/create-user'
 
-    navigate("/user/thank-you");
+    navigate("/thank-you");
   };
 
   return (

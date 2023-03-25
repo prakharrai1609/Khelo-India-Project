@@ -3,6 +3,7 @@ import { MongooseModule } from "@nestjs/mongoose";
 import { ConfigModule, ConfigService } from "@nestjs/config";
 import DatabaseService from "./database.service";
 import { User, UserSchema } from "src/schemas/user.schema";
+import { Admin, AdminSchema } from "src/schemas/admin.schema";
 
 @Module({
     imports: [
@@ -28,7 +29,8 @@ import { User, UserSchema } from "src/schemas/user.schema";
 export default class DatabaseModule {
     static forRoot() {
         return MongooseModule.forFeature([
-            { name: User.name, schema: UserSchema }
+            { name: User.name, schema: UserSchema },
+            { name: Admin.name, schema: AdminSchema }
         ])
     }
 }

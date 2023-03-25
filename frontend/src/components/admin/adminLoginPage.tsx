@@ -24,7 +24,7 @@ const AdminAuthenticationPage = () => {
       return;
     }
 
-    await API.post("/user/authenticate-user", {
+    await API.post("/admin/authenticate-admin", {
       "email": email,
       "password": password
     }).then((response) => {
@@ -91,7 +91,6 @@ const AdminAuthenticationPage = () => {
           </Link>
         </form>
       </div>
-      <Outlet />
     </>
   );
 };
