@@ -1,12 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../styles/createNewUser.css';
+import axios from 'axios';
+import { Navigate, useNavigate } from 'react-router-dom';
+import API from '../../axios';
 
 const CreateNewUserPage = () => {
+  const [name, setName] = useState('')
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordsMatch, setPasswordsMatch] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+
+  const handleNameChange = (event: any) => {
+    setName(event.target.value);
+  }
 
   const handleEmailChange = (event: any) => {
     setEmail(event.target.value);
@@ -27,23 +36,37 @@ const CreateNewUserPage = () => {
   };
 
   const handleSubmit = (event: any) => {
-    event.preventDefault();
+    // event.preventDefault();
 
     if (password !== confirmPassword) {
       setPasswordsMatch(false);
       return;
     }
+    API.post("/user/create-user", {
+      "name": name,
+      "email": email,
+      "password": password
+    }).catch((e) => console.log(e));
 
-    // TODO: handle form submission
+    // axios.post('http://127.0.0.1:8080/users/create-user'
 
-
-
+    navigate("/user/thank-you");
   };
 
   return (
     <div className="create-new-user-page-container">
       <h1 className="create-new-user-page-title">Create New User</h1>
       <form className="create-new-user-page-form" onSubmit={handleSubmit}>
+        <label className="create-new-user-page-label" htmlFor="name-input">Full Name</label>
+        <input
+          className="create-new-user-page-input"
+          id="name-input"
+          type="name"
+          value={name}
+          onChange={handleNameChange}
+          required
+        />
+
         <label className="create-new-user-page-label" htmlFor="email-input">Email</label>
         <input
           className="create-new-user-page-input"

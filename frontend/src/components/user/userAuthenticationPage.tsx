@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../../styles/userAuthenticationPage.css';
+import API from '../../axios';
 
 const AuthenticationPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const handleEmailChange = (event: any) => {
     setEmail(event.target.value);
@@ -15,12 +17,22 @@ const AuthenticationPage = () => {
     setPassword(event.target.value);
   };
 
-  const handleLoginClick = () => {
-    // Implement login logic here
-  };
+  const handleLoginClick = async () => {
+    if (!email || !password) {
+      window.alert('Please enter your email and password');
+      return;
+    }
 
-  const handleCreateUserClick = () => {
-    // Implement create user logic here
+    await API.post("/user/authenticate-user", {
+      "email": email,
+      "password": password
+    }).then((response) => {
+      if (response?.data) {
+        navigate(`dashboard/${response.data._id}`);
+      } else {
+        navigate('/unauthenticated-user');
+      }
+    }).catch((err) => console.log(err));
   };
 
   const handleShowPasswordToggle = () => {
@@ -37,6 +49,7 @@ const AuthenticationPage = () => {
           type="email"
           value={email}
           onChange={handleEmailChange}
+          required
           className="authentication-page-input"
         />
         <label htmlFor="password">Password:</label>
@@ -46,6 +59,7 @@ const AuthenticationPage = () => {
             type={showPassword ? 'text' : 'password'}
             value={password}
             onChange={handlePasswordChange}
+            required
             className="authentication-page-input authentication-page-password-input"
           />
           <button
@@ -57,8 +71,9 @@ const AuthenticationPage = () => {
           </button>
         </div>
         <button
-          type="submit"
+          type="button"
           onClick={handleLoginClick}
+          // style={{ textAlign: "center" }}
           className="authentication-page-button"
         >
           Login

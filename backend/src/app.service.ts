@@ -1,8 +1,11 @@
 import { Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class AppService {
-  getHello(): string {
-    return 'Hello World!';
+  constructor(private config: ConfigService) { }
+
+  healthCheck(): string {
+    return `Khelo bharat - running on port ${this.config.get('checkLoading')}`;
   }
 }
