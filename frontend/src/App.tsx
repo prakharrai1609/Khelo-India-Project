@@ -9,10 +9,10 @@ import OurTeam from './components/about/our-team'
 import AboutProject from "./components/about/aboutProject";
 import CreateUser from './components/user/createUser';
 import ThankYouCreateUser from './components/thankyoucreateuser';
-import { UserDashboard } from './components/user/userDashboard';
+import UserDashboard from './components/user/userDashboard';
 import AdminAuthenticationPage from './components/admin/adminLoginPage';
 import RegisterAdmin from './components/admin/registerAdmin';
-import { AdminDashboard } from './components/admin/adminDashboard';
+import AdminDashboard from './components/admin/adminDashboard';
 
 function App() {
   return (
