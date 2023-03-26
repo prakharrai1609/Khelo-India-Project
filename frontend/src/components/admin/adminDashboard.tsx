@@ -23,9 +23,34 @@ function AdminDashboard() {
         // TODO: Implement request approval logic
     };
 
+    const handleRequestRejection = (requestId: any) => {
+
+    };
+
     let requests: any[] = [
         {
             "status": "pending",
+            "id": 1,
+            "state": "Rajasthan",
+            "description": "This is for rajasthan state",
+            "cost": 10000
+        },
+        {
+            "status": "pending",
+            "id": 2,
+            "state": "Rajasthan",
+            "description": "This is for rajasthan state",
+            "cost": 10000
+        },
+        {
+            "status": "approved",
+            "id": 1,
+            "state": "Rajasthan",
+            "description": "This is for rajasthan state",
+            "cost": 10000
+        },
+        {
+            "status": "rejected",
             "id": 1,
             "state": "Rajasthan",
             "description": "This is for rajasthan state",
@@ -116,10 +141,16 @@ function AdminDashboard() {
                                     <strong>Cost:</strong> {request.cost}
                                 </p>
                                 <button
-                                    className="approve-button"
+                                    className="approve-button btn btn-primary"
                                     onClick={() => handleRequestApproval(request.id)}
                                 >
                                     Approve
+                                </button>
+                                <button
+                                    className='reject-button btn btn-danger'
+                                    onClick={() => handleRequestRejection(request)}
+                                >
+                                    Reject
                                 </button>
                             </div>
                         ))}
