@@ -51,9 +51,9 @@ function AdminDashboard() {
             "cost": 10000
         },
         {
-            "status": "rejected",
+            "status": "pending",
             "id": 1,
-            "state": "Rajasthan",
+            "state": "UP",
             "description": "This is for rajasthan state",
             "cost": 10000
         }
