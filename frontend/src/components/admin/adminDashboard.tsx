@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { DropdownButton, Dropdown, Nav, Tab } from 'react-bootstrap';
+import { Navbar } from '../navbar';
 
 function AdminDashboard() {
     const [stateFilter, setStateFilter] = useState('');
@@ -77,115 +78,118 @@ function AdminDashboard() {
     );
 
     return (
-        <div className="admin-portal-container">
-            <h1 className="admin-portal-heading">Admin Portal</h1>
-            <div className="admin-portal-filters">
-                <div className="filter">
-                    <label htmlFor="state-filter">State:</label>
-                    <input
-                        type="text"
-                        id="state-filter"
-                        value={stateFilter}
-                        onChange={handleStateFilterChange}
-                    />
+        <>
+            <Navbar />
+            <div className="admin-portal-container">
+                <h1 className="admin-portal-heading">Admin Portal</h1>
+                <div className="admin-portal-filters">
+                    <div className="filter">
+                        <label htmlFor="state-filter">State:</label>
+                        <input
+                            type="text"
+                            id="state-filter"
+                            value={stateFilter}
+                            onChange={handleStateFilterChange}
+                        />
+                    </div>
+                    <div className="filter">
+                        <label htmlFor="city-filter">City:</label>
+                        <input
+                            type="text"
+                            id="city-filter"
+                            value={cityFilter}
+                            onChange={handleCityFilterChange}
+                        />
+                    </div>
+                    <div className="filter">
+                        <label htmlFor="cost-filter">Cost:</label>
+                        <DropdownButton id="cost-filter" title={costFilter || 'Select'}>
+                            <Dropdown.Item onClick={() => setCostFilter('<$10000')}>
+                                $10000
+                            </Dropdown.Item>
+                            <Dropdown.Item onClick={() => setCostFilter('<$50000')}>
+                                $50000
+                            </Dropdown.Item>
+                            <Dropdown.Item onClick={() => setCostFilter('<$100000')}>
+                                $100000
+                            </Dropdown.Item>
+                        </DropdownButton>
+                    </div>
                 </div>
-                <div className="filter">
-                    <label htmlFor="city-filter">City:</label>
-                    <input
-                        type="text"
-                        id="city-filter"
-                        value={cityFilter}
-                        onChange={handleCityFilterChange}
-                    />
-                </div>
-                <div className="filter">
-                    <label htmlFor="cost-filter">Cost:</label>
-                    <DropdownButton id="cost-filter" title={costFilter || 'Select'}>
-                        <Dropdown.Item onClick={() => setCostFilter('<$10000')}>
-                            $10000
-                        </Dropdown.Item>
-                        <Dropdown.Item onClick={() => setCostFilter('<$50000')}>
-                            $50000
-                        </Dropdown.Item>
-                        <Dropdown.Item onClick={() => setCostFilter('<$100000')}>
-                            $100000
-                        </Dropdown.Item>
-                    </DropdownButton>
-                </div>
-            </div>
-            <Tab.Container
-                activeKey={currentTab}
-                onSelect={(key: any) => setCurrentTab(key)}
-            >
-                <Nav variant="tabs" className="admin-portal-tabs">
-                    <Nav.Item>
-                        <Nav.Link eventKey="pending">Pending Requests</Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                        <Nav.Link eventKey="approved">Approved Requests</Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                        <Nav.Link eventKey="rejected">Rejected Requests</Nav.Link>
-                    </Nav.Item>
-                </Nav>
-                <Tab.Content>
-                    <Tab.Pane eventKey="pending">
-                        {pendingRequests.map((request: any) => (
-                            <div key={request.id} className="request">
-                                <p>
-                                    <strong>{request.name}</strong> ({request.state},{' '}
-                                    {request.city}):
-                                </p>
-                                <p>{request.description}</p>
-                                <p>
-                                    <strong>Cost:</strong> {request.cost}
-                                </p>
-                                <button
-                                    className="approve-button btn btn-primary"
-                                    onClick={() => handleRequestApproval(request.id)}
-                                >
-                                    Approve
-                                </button>
-                                <button
-                                    className='reject-button btn btn-danger'
-                                    onClick={() => handleRequestRejection(request)}
-                                >
-                                    Reject
-                                </button>
-                            </div>
-                        ))}
-                    </Tab.Pane>
-                    <Tab.Pane eventKey="approved">
-                        {approvedRequests.map((request: any) => (
-                            <div key={request.id} className="request">
-                                <p>
-                                    <strong>{request.name}</strong> ({request.state},{' '}
-                                    {request.city}): Approve
-                                </p>
-                                <p>{request.description}</p>
-                                <p>
-                                    <strong>Cost:</strong> {request.cost}
-                                </p>
-                            </div>
-                        ))}
-                    </Tab.Pane>
-                    <Tab.Pane eventKey="rejected">
-                        {rejectedRequests.map((request: any) => (
-                            <div key={request.id} className="request">
-                                <p>
-                                    <strong>{request.name}</strong> ({request.state},{' '}
-                                    {request.city}): Rejected
-                                </p>
-                                <p>{request.description}</p>
-                                <p>
-                                    <strong>Cost:</strong> {request.cost}
-                                </p>
-                            </div>
-                        ))}
-                    </Tab.Pane>
-                </Tab.Content>
-            </Tab.Container>
-        </div >
+                <Tab.Container
+                    activeKey={currentTab}
+                    onSelect={(key: any) => setCurrentTab(key)}
+                >
+                    <Nav variant="tabs" className="admin-portal-tabs">
+                        <Nav.Item>
+                            <Nav.Link eventKey="pending">Pending Requests</Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Nav.Link eventKey="approved">Approved Requests</Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Nav.Link eventKey="rejected">Rejected Requests</Nav.Link>
+                        </Nav.Item>
+                    </Nav>
+                    <Tab.Content>
+                        <Tab.Pane eventKey="pending">
+                            {pendingRequests.map((request: any) => (
+                                <div key={request.id} className="request">
+                                    <p>
+                                        <strong>{request.name}</strong> ({request.state},{' '}
+                                        {request.city}):
+                                    </p>
+                                    <p>{request.description}</p>
+                                    <p>
+                                        <strong>Cost:</strong> {request.cost}
+                                    </p>
+                                    <button
+                                        className="approve-button btn btn-primary"
+                                        onClick={() => handleRequestApproval(request.id)}
+                                    >
+                                        Approve
+                                    </button>
+                                    <button
+                                        className='reject-button btn btn-danger'
+                                        onClick={() => handleRequestRejection(request)}
+                                    >
+                                        Reject
+                                    </button>
+                                </div>
+                            ))}
+                        </Tab.Pane>
+                        <Tab.Pane eventKey="approved">
+                            {approvedRequests.map((request: any) => (
+                                <div key={request.id} className="request">
+                                    <p>
+                                        <strong>{request.name}</strong> ({request.state},{' '}
+                                        {request.city}): Approve
+                                    </p>
+                                    <p>{request.description}</p>
+                                    <p>
+                                        <strong>Cost:</strong> {request.cost}
+                                    </p>
+                                </div>
+                            ))}
+                        </Tab.Pane>
+                        <Tab.Pane eventKey="rejected">
+                            {rejectedRequests.map((request: any) => (
+                                <div key={request.id} className="request">
+                                    <p>
+                                        <strong>{request.name}</strong> ({request.state},{' '}
+                                        {request.city}): Rejected
+                                    </p>
+                                    <p>{request.description}</p>
+                                    <p>
+                                        <strong>Cost:</strong> {request.cost}
+                                    </p>
+                                </div>
+                            ))}
+                        </Tab.Pane>
+                    </Tab.Content>
+                </Tab.Container>
+            </div >
+        </>
     );
 }
 
