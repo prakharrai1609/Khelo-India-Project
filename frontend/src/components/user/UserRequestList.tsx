@@ -1,46 +1,39 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import API from '../../axios';
+import { useSearchParams } from 'react-router-dom';
+import { Image } from 'react-bootstrap';
 
 function RequestList({ status }: { status: string }) {
-    let requests: any[] = [
-        {
-            "status": "completed",
-            "title": "This is the first title",
-            "description": "This is the first description"
-        },
-        {
-            "status": "completed",
-            "title": "This is the second title",
-            "description": "This is the first description"
-        },
-        {
-            "status": "pending",
-            "title": "This is the first title",
-            "description": "This is the first description"
-        },
-        {
-            "status": "pending",
-            "title": "This is the first title",
-            "description": "This is the first description"
-        },
-        {
-            "status": "pending",
-            "title": "This is the first title",
-            "description": "This is the first description"
+    const [filteredRequests, setFilteredRequests] = useState([]);
+
+    useEffect(() => {
+        const userId = window.location.href.split('/').slice(-1)[0];
+        const getData = async () => {
+            return await API.get('/user/get-requests', {
+                params: {
+                    status: status,
+                    userId: userId
+                }
+            });
         }
-    ];
-    const filteredRequests = requests.filter((request: any) => request.status === status);
+
+        getData().then((response) => {
+            setFilteredRequests(filteredRequests => response?.data);
+        })
+    }, []);
 
     return (
         <div className="request-list-container">
-            {filteredRequests.map((request: any) => (
+            {filteredRequests.length ? filteredRequests?.map((request: any) => (
                 <div className={`request-card ${request.status}`} key={request.id}>
                     <h2>{request.title}</h2>
                     <p>{request.description}</p>
                     <p>
                         <span>Status:</span> {request.status}
                     </p>
+                    {status === 'REJECTED' && <p>{request.rejectReason}</p>}
                 </div>
-            ))}
+            )) : <img src={require('../../images/empty.jpg')} className="team-member" />}
         </div>
     );
 }
