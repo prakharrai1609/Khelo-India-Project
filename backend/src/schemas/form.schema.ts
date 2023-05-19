@@ -7,6 +7,9 @@ export type FormDocument = HydratedDocument<Form>;
 @Schema()
 export class Form {
   @Prop()
+  userId: string;
+
+  @Prop()
   name: string;
 
   @Prop()
@@ -42,6 +45,9 @@ export class Form {
     enum: Status,
   })
   status: string;
+
+  @Prop()
+  rejectReason: string;
 }
 
 export const FormSchema = SchemaFactory.createForClass(Form);

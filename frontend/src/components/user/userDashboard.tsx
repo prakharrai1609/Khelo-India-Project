@@ -7,23 +7,34 @@ function Dashboard() {
     const [showForm, setShowForm] = useState(false);
     const [showPending, setShowPending] = useState(false);
     const [showCompleted, setShowCompleted] = useState(false);
+    const [showRejected, setShowRejected] = useState(false);
 
     const handleCreateRequest = () => {
         setShowForm(true);
         setShowPending(false);
         setShowCompleted(false);
+        setShowRejected(false);
     };
 
     const handlePendingRequests = () => {
         setShowForm(false);
         setShowPending(true);
         setShowCompleted(false);
+        setShowRejected(false);
     };
 
     const handleCompletedRequests = () => {
         setShowForm(false);
         setShowPending(false);
         setShowCompleted(true);
+        setShowRejected(false);
+    };
+
+    const handleRejectedRequests = () => {
+        setShowForm(false);
+        setShowPending(false);
+        setShowCompleted(false);
+        setShowRejected(true);
     };
 
     return (
@@ -31,9 +42,11 @@ function Dashboard() {
             <button className="dashboard-btn" onClick={handleCreateRequest}>Create request</button>
             <button className="dashboard-btn" onClick={handlePendingRequests}>Pending requests</button>
             <button className="dashboard-btn" onClick={handleCompletedRequests}>Completed requests</button>
+            <button className="dashboard-btn" onClick={handleRejectedRequests}>Rejected requests</button>
             {showForm && <RequestForm />}
-            {showPending && <RequestList status="pending" />}
-            {showCompleted && <RequestList status="completed" />}
+            {showPending && <RequestList status="PENDING" />}
+            {showCompleted && <RequestList status="APPROVED" />}
+            {showRejected && <RequestList status="REJECTED" />}
         </div>
     );
 }
